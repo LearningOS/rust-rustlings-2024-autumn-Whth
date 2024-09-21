@@ -7,11 +7,11 @@
 // Execute `rustlings hint as_ref_mut` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+use std::ops::Deref;
 
 // Obtain the number of bytes (not characters) in the given argument.
 // TODO: Add the AsRef trait appropriately as a trait bound.
-fn byte_counter<T: AsRef<u32>>(arg: T) -> usize {
+fn byte_counter<T: Sized + AsRef<str>>(arg: T) -> usize {
     arg.as_ref().as_bytes().len()
 }
 
@@ -23,9 +23,9 @@ fn char_counter<T: AsRef<str>>(arg: T) -> usize {
 
 // Squares a number using as_mut().
 // TODO: Add the appropriate trait bound.
-fn num_sq<T: AsMut<i32>>(arg: &mut T) {
+fn num_sq<T: Deref<Target=u32> + AsMut<u32>>(arg: &mut T) {
     // TODO: Implement the function body.
-    arg.as_mut().pow(2);
+    *arg.as_mut() = arg.deref().pow(2);
 }
 
 #[cfg(test)]
