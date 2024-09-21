@@ -5,11 +5,9 @@
 // Execute `rustlings hint lifetimes3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
-struct Book {
-    author: &str,
-    title: &str,
+struct Book<'a> {
+    author: &'a str, // borrowed str, must be valid for the lifetime of the struct, i.e. 'a
+    title: &'a str,
 }
 
 fn main() {
