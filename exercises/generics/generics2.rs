@@ -6,16 +6,26 @@
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
-struct Wrapper {
-    value: u32,
+struct Wrapper<T> {
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+impl<T> Wrapper<T> {
+    // 新建一个 Wrapper 实例
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
+}
+
+// 示例使用
+fn main() {
+    let int_wrapper = Wrapper::new(42);
+    let str_wrapper = Wrapper::new(String::from("Hello, world!"));
+    let float_wrapper = Wrapper::new(3.14);
+
+    println!("Integer Wrapper: {:?}", int_wrapper.value);
+    println!("String Wrapper: {:?}", str_wrapper.value);
+    println!("Float Wrapper: {:?}", float_wrapper.value);
 }
 
 #[cfg(test)]
